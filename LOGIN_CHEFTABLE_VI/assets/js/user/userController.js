@@ -1,11 +1,15 @@
+// Importa las funciones necesarias de Firebase Authentication
 import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
 import { sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
 import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
+// Importa la instancia de autenticación de Firebase
 import { auth } from "../app/firebase.js";
+// Importa funciones de utilidad definidas en otro archivo
 import * as FunApp from "../app/functions.js";
-
+// Define la URL de la página de administración
 const dashboardURL = "/PROYEC_CHEF-TABLE-VI/admin.html"; // Ruta completa hacia la página de administración
 
+// Define los IDs de los elementos en el formulario de usuario
 const idInputPasswordRP = "repeatPassword";
 const idInputPassword = "password";
 const btnPasswordRP = document.getElementById("btn-passwordRP");
@@ -14,16 +18,19 @@ const objForm = document.getElementById("formUser");
 const objFormPasswordRecover = document.getElementById("formPasswordRecover");
 const objFormLogin = document.getElementById("formLogin");
 
+// Agrega un event listener al botón de ocultar/mostrar contraseña
 if (btnPassword)
   btnPassword.addEventListener("click", (e) => {
     FunApp.viewText(idInputPassword);
   });
 
+// Agrega un event listener al botón de ocultar/mostrar contraseña de repetición
 if (btnPasswordRP)
   btnPasswordRP.addEventListener("click", (e) => {
     FunApp.viewText(idInputPasswordRP);
   });
 
+// Agrega un event listener al formulario de usuario para el registro
 if (objForm)
   objForm.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -55,6 +62,7 @@ if (objForm)
     }
   });
 
+// Agrega un event listener al formulario de recuperación de contraseña
 if (objFormPasswordRecover)
   objFormPasswordRecover.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -83,6 +91,7 @@ if (objFormPasswordRecover)
     }
   });
 
+// Agrega un event listener al formulario de inicio de sesión
 objFormLogin.addEventListener("submit", async (e) => {
   e.preventDefault();
   let jsonUser = FunApp.sendData(objFormLogin.id);

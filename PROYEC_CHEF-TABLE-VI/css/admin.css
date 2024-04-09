@@ -269,18 +269,6 @@ tr td:last-child {
   align-items: center;
 }
 
-.status.green {
-  background: rgb(6, 192, 6);
-}
-
-.status.yellow {
-  background: yellow;
-}
-
-.status.red {
-  background: red;
-}
-
 .table-responsive {
   width: 100%;
   overflow-x: auto;
