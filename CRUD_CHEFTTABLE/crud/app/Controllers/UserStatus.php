@@ -20,7 +20,7 @@ class UserStatus extends Controller{
 
 	public function index(){
 		$this->data['title']="USER STATUS";
-		$this->data[$this->model]=$this->StatusModel->orderBy($this->primaryKey, 'DESC')->findAll();
+		$this->data[$this->model]=$this->StatusModel->orderBy($this->primaryKey, 'ASC')->findAll();
 		return view('userStatus/status_view' , $this->data);
 	}
 }
