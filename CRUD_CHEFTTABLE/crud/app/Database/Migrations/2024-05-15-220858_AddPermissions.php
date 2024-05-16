@@ -3,43 +3,45 @@
 namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
+use CodeIgniter\Database\RawSql;
 
-class AddUserRoles extends Migration
+class AddPermissions extends Migration
 {
     public function up()
     {
         $this->forge->addField([
-            'Roles_id' => [
+            'Permissions_id' => [
                 'type' => 'INT',
                 'constraint' => 11,
                 'unsigned' => true,
                 'auto_increment' => true,
             ],
-            'Roles_name' => [
+            'Permissions_name' => [
                 'type' => 'VARCHAR',                
                 'unique' => true,
-                'constraint' => 30,                
+                'constraint' => 30, 
             ],
-            'Roles_description' => [
+            'Permissions_description' => [
                 'type' => 'VARCHAR',       
                 'constraint' => 300, 
                 'null' => true,                               
             ],
             'create_at' => [
                 'type' => 'TIMESTAMP',    
-                'null' => true,                                               
+                'null' => true, 
+                'default' => new RawSql('CURRENT_TIMESTAMP'),                                              
             ],
             'update_at' => [
                 'type' => 'TIMESTAMP',    
                 'null' => true,                                               
             ],
         ]);
-        $this->forge->addPrimaryKey('Roles_id');
-        $this->forge->createTable('roles');
+        $this->forge->addPrimaryKey('Permissions_id');
+        $this->forge->createTable('permissions');
     }
 
     public function down()
     {
-        $this->forge->dropTable('roles');
+        $this->forge->dropTable('permissions');
     }
 }

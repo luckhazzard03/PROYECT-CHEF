@@ -4,15 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class UserStatusModel extends Model
+class ModuleModel extends Model
 {
-    protected $table            = 'user_status';
-    protected $primaryKey       = 'User_status_id';
+    protected $table            = 'modules';
+    protected $primaryKey       = 'Modules_id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['User_status_id','User_status_name', 'User_status_description','update_at'];
+    protected $allowedFields    = ["Modules_name", "Modules_description", "Modules_route", "Modules_icon", "Modules_submodule", "Modules_parent_module", "update_at"];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
@@ -21,7 +21,7 @@ class UserStatusModel extends Model
     protected array $castHandlers = [];
 
     // Dates
-    protected $useTimestamps = true;
+    protected $useTimestamps = false;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';

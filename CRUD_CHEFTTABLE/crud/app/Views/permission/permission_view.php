@@ -29,7 +29,7 @@
 				<h3><?= $title ?></h3>
 				<button type="button" class="btn btn-primary btn-actions" title="Button new User Status" onclick="add()" style="font-size: 0.5rem;"><i class="bi bi-plus-circle-fill"></i></button>
 				<!--Container Table-->
-				<?php require_once('../app/Views/userStatus/table.php') ?>
+				<?php require_once('../app/Views/permission/table.php') ?>
 				<!--END container Table-->
 			</div>
 		</div>
@@ -50,7 +50,7 @@
 				</div>
 				<div class="modal-body">
 					<!--FORM-->
-					<?php require_once('../app/Views/userStatus/form.php') ?>
+					<?php require_once('../app/Views/permission/form.php') ?>
 					<!--END FORM-->
 				</div>
 				<div class="modal-footer">
@@ -68,7 +68,7 @@
 	<?php require_once('../app/Views/assets/js/dataTable.php') ?>
 	
 	<!--JS CONTROLLER-->
-	<script src="../controllers/userStatus/userStatus.js"></script>
+	<script src="../controllers/permission/permission.js"></script>
 	
 </body>
 

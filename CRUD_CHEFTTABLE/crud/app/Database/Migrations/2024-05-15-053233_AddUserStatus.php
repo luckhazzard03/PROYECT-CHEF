@@ -3,6 +3,7 @@
 namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
+use CodeIgniter\Database\RawSql;
 
 class AddUserStatus extends Migration
 {
@@ -27,7 +28,8 @@ class AddUserStatus extends Migration
             ],
             'create_at' => [
                 'type' => 'TIMESTAMP',    
-                'null' => true,                                               
+                'null' => true, 
+                'default' => new RawSql('CURRENT_TIMESTAMP'),                                                
             ],
             'update_at' => [
                 'type' => 'TIMESTAMP',    

@@ -3,34 +3,34 @@
 namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
+use CodeIgniter\Database\RawSql;
 
-class AddUsers extends Migration
+class AddProfiles extends Migration
 {
     public function up()
     {
         $this->forge->addField([
-            'User_id' => [
+            'Profile_id' => [
                 'type' => 'INT',
                 'constraint' => 11,
                 'unsigned' => true,
                 'auto_increment' => true,
             ],
-            'User_user' => [
+            'Profile_email' => [
                 'type' => 'VARCHAR',                
                 'unique' => true,
                 'constraint' => 255,                
             ],
-            'User_password' => [
+            'Profile_name' => [
                 'type' => 'VARCHAR',       
-                'constraint' => 255,                                             
+                'constraint' => 30,                                             
             ],
-            'Roles_fk' => [
-                'type' => 'INT',       
-                'constraint' => 11, 
-                'unsigned' => true,                                            
+            'Profile_photo' => [
+                'type' => 'VARCHAR',       
+                'constraint' => 255,                                                             
                 'null' => true,                                            
             ],
-            'User_status_fk' => [
+            'User_id_fk' => [
                 'type' => 'INT',       
                 'constraint' => 11, 
                 'unsigned' => true,                                            
@@ -38,21 +38,21 @@ class AddUsers extends Migration
             ],
             'create_at' => [
                 'type' => 'TIMESTAMP',    
-                'null' => true,                                               
+                'null' => true,  
+                'default' => new RawSql('CURRENT_TIMESTAMP'),                                             
             ],
             'update_at' => [
                 'type' => 'TIMESTAMP',    
                 'null' => true,                                               
             ],
         ]);
-        $this->forge->addPrimaryKey('User_id');
-        $this->forge->addForeignKey('User_status_fk', 'user_status', 'user_status_id', 'CASCADE', 'SET NULL', 'fk_user_status' );
-        $this->forge->addForeignKey('Roles_fk', 'roles', 'Roles_id', 'CASCADE', 'SET NULL', 'fk_user_role' );
-        $this->forge->createTable('users');
+        $this->forge->addPrimaryKey('Profile_id');
+        $this->forge->addForeignKey('User_id_fk', 'users', 'User_id', 'CASCADE', 'CASCADE',  'fk_user_profile' );       
+        $this->forge->createTable('profiles');
     }
 
     public function down()
     {
-        $this->forge->dropTable('users');
+        $this->forge->dropTable('profiles');
     }
 }
